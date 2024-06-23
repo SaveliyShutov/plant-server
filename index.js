@@ -1,14 +1,10 @@
 const express = require('express');
-// const helmet = require('helmet')
-
 const cors = require('cors')
 const app = express()
 // const mongoose = require('mongoose')
 
-// here all routes
-const tripRouter = require('./routers/trip-router')
-
-app.use(history())
+require('dotenv').config()
+const authRouter = require('./routers/auth-router')
 
 // app.use(cors({
 //     origin: [process.env.CLIENT_URL, "http://localhost:5174", "https://gorodaivesi.ru"],
@@ -21,11 +17,11 @@ app.use(express.json())
 app.use('/auth', authRouter)
 
 function startServer() {
-    try {
-        app.listen(process.env.PORT, () => { console.log(`Server is running on http://localhost:${process.env.PORT}`); })
-    } catch (err) {
-        console.error('Error while starting server: ', err);
-    }
+	try {
+		app.listen(process.env.PORT, () => { console.log(`Server is running on http://localhost:${process.env.PORT}`); })
+	} catch (err) {
+		console.error('Error while starting server: ', err);
+	}
 }
 
 // function mongoConnect() {
