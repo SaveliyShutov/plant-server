@@ -1,15 +1,15 @@
 const express = require('express');
 const cors = require('cors')
 const app = express()
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 require('dotenv').config()
 const authRouter = require('./routers/auth-router')
 
-// app.use(cors({
-//     origin: [process.env.CLIENT_URL, "http://localhost:5174", "https://gorodaivesi.ru"],
-//     credentials: true
-// }))
+app.use(cors({
+    origin: [process.env.CLIENT_URL, "http://localhost:3000"],
+    credentials: true
+}))
 
 app.use(express.json())
 
@@ -24,25 +24,18 @@ function startServer() {
 	}
 }
 
-// function mongoConnect() {
-//     mongoose.connect(process.env.MONGO_URL, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     const db = mongoose.connection;
-//     db.on('error', console.error.bind(console, 'connection error:'));
+function mongoConnect() {
+    mongoose.connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    const db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
 
-//     db.collections.trips.createIndex({ 'startLocation': '2dsphere' })
-//     db.collections.catalogtrips.createIndex({ 'startLocation': '2dsphere' })
-//     db.collections.users.createIndex({ 'userLocation': '2dsphere' })
-//     db.collections.companions.createIndex({ 'startLocation': '2dsphere' })
-//     db.collections.trips.createIndex({ 'includedLocations': '2dsphere' })
-//     db.collections.excursions.createIndex({ 'location.coordinates': '2dsphere' })
-
-//     db.once('open', function () {
-//         console.log('connection')
-//     });
-// }
+    db.once('open', function () {
+        console.log('connection')
+    });
+}
 
 startServer()
-// mongoConnect()
+mongoConnect()

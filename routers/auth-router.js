@@ -13,5 +13,6 @@ const authController = require('../controllers/user-controller.js')
 
 // here all routes
 router.post('/login', authController.login)
+router.post('/count', authController.count)
 
 module.exports = router
