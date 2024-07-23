@@ -7,7 +7,7 @@ require('dotenv').config()
 const authRouter = require('./routers/auth-router')
 
 app.use(cors({
-    origin: [process.env.CLIENT_URL,'https://plantcoin.ru', "http://localhost:3000", 'https://master--fastidious-praline-d59303.netlify.app'],
+    origin: [process.env.CLIENT_URL,'https://plantcoin.ru', 'http://89.169.129.49:3030',"http://localhost:3000", 'https://master--fastidious-praline-d59303.netlify.app'],
     credentials: true
 }))
 
