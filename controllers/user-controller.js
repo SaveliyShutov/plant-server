@@ -4,7 +4,6 @@ const UserService = require('../service/user-service.js')
 module.exports = {
     async login(req, res, next) {
         try {
-            console.log(req.body);
             const userData = await UserService.login(req.body)
             return res.json(userData)
         } catch (error) {
