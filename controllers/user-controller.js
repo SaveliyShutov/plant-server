@@ -9,6 +9,14 @@ module.exports = {
         } catch (error) {
             next(error)
         }
+    },  
+    async openBox(req, res, next) {
+        try {
+            const userData = await UserService.openBox(req.body)
+            return res.json(userData)
+        } catch (error) {
+            next(error)
+        }
     },
     async count(req, res, next) {
         try {
