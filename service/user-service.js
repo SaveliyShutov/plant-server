@@ -20,7 +20,6 @@ module.exports = {
         }
     },
     async login(body) {
-        console.log(body);
         const candidate = await UserModel.findOne({ 'tgId': body.id })
         if (candidate) {
             return candidate
