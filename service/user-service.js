@@ -3,12 +3,12 @@ const UserModel = require('../models/user-model')
 module.exports = {
     async login(body) {
         console.log(body);
-        const candidate = await UserModel.findOne({ 'tgId': body.tgId })
+        const candidate = await UserModel.findOne({ 'tgId': body.id })
         if (candidate) {
             return candidate
         }
         const user = await UserModel.create({
-            tgId: body.tgId,
+            tgId: body.id,
             userName: body.username,
             count: 0,
             isWaiting: false,
