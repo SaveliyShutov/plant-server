@@ -2,6 +2,7 @@ const UserModel = require('../models/user-model')
 
 module.exports = {
     async login(body) {
+        console.log(body);
         const candidate = await UserModel.findOne({ 'tgId': body.tgId })
         if (candidate) {
             return candidate
